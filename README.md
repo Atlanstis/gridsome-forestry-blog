@@ -1,14 +1,29 @@
-# Default starter for Gridsome
+# Gridsome-Blog
 
-This is the project you get when you run `gridsome create new-project`.
+使用 Gridsome 及 strapi 搭建可配置的博客。
 
-### 1. Install Gridsome CLI tool if you don't have
+## Gridsome
 
-`npm install --global @gridsome/cli`
+> [Gridsome](https://gridsome.org/)：Gridsome 是一个免费、开源、基于 Vue.js 构建的框架。
 
-### 2. Create a Gridsome project
+### 初始化项目
 
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+1. 安装 Gridsome CLI 工具
+
+   ```shell
+   yarn global add @gridsome/cli
+   ```
+
+2. 创建 Gridsome 项目
+
+   1. 使用 `gridsome create my-gridsome-site` 命令，初始化项目。
+   2. `cd my-gridsome-site` 命令，进入项目目录。
+   3. 使用 `gridsome develop` 命令，以开发模式运行 gridsome。
+
+
+
+## 参考链接
+
+1. [Gridsome](https://gridsome.org/)
+2. [strapi](https://strapi.io/)
+
