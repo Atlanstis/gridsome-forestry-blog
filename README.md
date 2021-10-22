@@ -20,6 +20,10 @@
    2. `cd my-gridsome-site` 命令，进入项目目录。
    3. 使用 `gridsome develop` 命令，以开发模式运行 gridsome。
 
+### graphql
+
+项目启动后，未更改启动端口时，可通过 http://localhost:8080/___explore 进行 graphql 的查询。
+
 
 
 ## 参考链接
