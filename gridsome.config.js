@@ -22,5 +22,13 @@ module.exports = {
         }
       }
     }
-  ]
+  ],
+  templates: {
+    StrapiProject: [
+      {
+        path: '/projects/:id',
+        component: './src/templates/ProjectPost.vue'
+      }
+    ]
+  }
 }

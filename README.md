@@ -52,6 +52,28 @@ DB_PASS=s1mpl3
 
 通过插件 `@gridsome/source-strapi` 我们可以从 strapi 中读取数据，并通过 graphql 进行数据的查询。
 
+### template
+
+> [template](https://gridsome.org/docs/templates/)：template 使用说明
+
+集合中的数据，可以通过单独的页面来进行展示。
+
+```js
+// gridsome.config.js
+module.exports = {
+  templates: {
+    Post: [
+      {
+        path: '/blog/:year/:month/:title',
+        component: './src/other/location/Post.vue'
+      }
+    ]
+  }
+}
+```
+
+通过在 `gridsome.config.js` 配置文件中，制定组件的方式，来对集合中的每条数据进行渲染。
+
 ## strapi
 
 > [strapi](https://strapi.io/)：一个可以简单、快速、自动生成安全可靠后端 api 的框架。
