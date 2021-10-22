@@ -66,9 +66,16 @@ DB_PASS=s1mpl3
 yarn create strapi-app my-project --quickstart
 ```
 
+### 数据接口
+
+> [Content API](https://strapi.io/documentation/developer-docs/latest/developer-resources/content-api/content-api.html)：数据接口使用。
+
+在创建相应的集合类型或者单一类型后，`strapi` 会默认生成一系列接口，供调用。在 `角色和权限` 对集合类型进行权限的设置后，我们就可对数据进行查询，新增，删除，更新等操作。
+
 ### Tip
 
 1. 在添加完集合类型后，需在 `角色和权限` 对集合类型进行对应的权限设置，不然将无法进行查询。
+2. 使用单一类型时，建议使用查询集合的方式进行查询。
 
 ## 参考链接
 
