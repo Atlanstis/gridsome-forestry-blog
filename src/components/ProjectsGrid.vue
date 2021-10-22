@@ -3,7 +3,7 @@
     <div class="project" v-for="item in projects" :key="item.node.id">
       <g-link :to="item.node.path" class="project-link">
         <g-image
-          :src="`http://localhost:1337${item.node.thumbnail.url}`"
+          :src="imgUrlCover(item.node.thumbnail.url)"
           :alt="item.node.title"
           class="thumbnail"
         />
@@ -22,12 +22,18 @@
 </template>
 
 <script>
+import { imgUrlCover } from '@/utils'
+
 export default {
   props: {
     projects: {
       type: Array,
       required: true
     }
+  },
+
+  methods: {
+    imgUrlCover
   }
 }
 </script>
