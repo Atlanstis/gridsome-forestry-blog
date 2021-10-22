@@ -25,7 +25,7 @@ query {
       }
     }
   }
-  journals: allStrapiJournal {
+  journals: allStrapiJournal (perPage: 4) {
     edges {
       node {
         id
