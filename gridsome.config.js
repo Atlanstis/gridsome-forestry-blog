@@ -29,6 +29,12 @@ module.exports = {
         path: '/projects/:id',
         component: './src/templates/ProjectPost.vue'
       }
+    ],
+    StrapiJournal: [
+      {
+        path: '/journal-post/:id',
+        component: './src/templates/JournalPost.vue'
+      }
     ]
   }
 }

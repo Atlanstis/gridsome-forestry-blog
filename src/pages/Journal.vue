@@ -9,7 +9,7 @@
     </div>
 
     <g-link
-      :to="item.node.path"
+      :to="`/journal-post/${item.node.id}`"
       v-for="item in $page.journals.edges"
       :key="item.node.id"
       class="journal-post"
