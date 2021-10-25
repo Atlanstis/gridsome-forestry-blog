@@ -22,6 +22,14 @@
    2. `cd my-gridsome-site` 命令，进入项目目录。
    3. 使用 `gridsome develop` 命令，以开发模式运行 gridsome。
 
+针对 gridsome 依赖 sharp，安装过慢的问题，可通过使用淘宝镜像方式解决。
+
+```shell
+npm config set sharp_binary_host "https://npm.taobao.org/mirrors/sharp"
+
+npm config set sharp_libvips_binary_host "https://npm.taobao.org/mirrors/sharp-libvips"
+```
+
 ### graphql
 
 项目启动后，未更改启动端口时，可通过 http://localhost:8080/___explore 进行 graphql 的查询。
@@ -98,6 +106,71 @@ yarn create strapi-app my-project --quickstart
 
 1. 在添加完集合类型后，需在 `角色和权限` 对集合类型进行对应的权限设置，不然将无法进行查询。
 2. 使用单一类型时，建议使用查询集合的方式进行查询。
+
+## 部署
+
+### 切换 strapi 数据库
+
+> [strapi 更改数据库](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#database)
+
+`strapi` 默认使用 `sqlite`（以本地文件方式存储数据） 来进行数据的存储。此处我们将其切换为 `mysql`。
+
+1. 在 `/config/database.js` 下，修改数据库配置为 `mysql`:
+
+   ```js
+   module.exports = ({ env }) => ({
+     defaultConnection: "default",
+     connections: {
+       default: {
+         connector: "bookshelf",
+         settings: {
+           client: "mysql",
+           host: env("DATABASE_HOST", "localhost"),
+           port: env.int("DATABASE_PORT", 3306),
+           database: env("DATABASE_NAME", "blog"),
+           username: env("DATABASE_USERNAME", "strapi"),
+           password: env("DATABASE_PASSWORD", "strapi"),
+         },
+         options: {},
+       },
+     },
+   });
+   ```
+
+2. 增加 `mysql` 依赖：
+
+   ```shell
+   yarn add mysql
+   ```
+
+
+### 部署 strapi
+
+1. 将代码上传至服务器上。
+
+2. 运行以下命令，使用 `pm2` 运行 `strapi`。
+
+   ```shell
+   pm2 start "yarn start" --name blog-backend
+   ```
+
+### 部署 gridsome
+
+> [vercel](https://vercel.com/)：网站托管服务。
+
+此项目中，使用 `vercel` 对 `gridsome` 进行托管。
+
+1. 修改 `.env` 文件中，后端地址。（可使用 `.env.production` 与 `.env.development` 将开发环境与生产环境进行区分）
+2. 推送到 `git` 仓库。
+3. 在 `vercel` 中，引入 `git` 仓库，并进行部署。
+
+### 自动部署
+
+在 `vercel` 中，可通过 `Deploy Hooks` 的方式，当 `strapi` 中数据发生变化时，自动进行构建。
+
+1. 在 `vercel` 下项目的 `Settings` 找到 `Deploy Hooks` ，通过 `Create Hook` 生成对应接口。
+2. 在 `strapi` 设置只能找到 `Webhooks`，将上方的接口地址填入。
+3. 此时当 `strapi` 中，数据发生变化时，就会触发 `vercel`  的重新部署。
 
 ## 参考链接
 
